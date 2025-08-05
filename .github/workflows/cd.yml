@@ -1,0 +1,30 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  CD:
+    name: Continuous Delivery
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Digital Ocean Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          script: |
+            cd /var/www/multlentes-backend
+            git pull origin master
+            composer install --no-interaction --prefer-dist --optimize-autoloader
+            php artisan migrate --force
+            php artisan db:seed --force
+            php artisan cache:clear
+            sudo systemctl restart apache2
