@@ -1,0 +1,137 @@
+:root {
+    --primary: #005c99;
+    --primary-dark: #004a80;
+    --accent: #ff9800;
+    --danger: #d9534f;
+    --bg-light: #f6f6f6;
+    --bg-card: #ffffff;
+    --border-color: #ddd;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: var(--accent);
+}
+
+.btn-sair {
+    background: var(--danger);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-sair:hover {
+    background: #c9302c;
+}
+
+.filter {
+    padding: 15px 20px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter input[type="date"], .filter button {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.filter button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.filter button:hover {
+    background: var(--primary-dark);
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    flex: 1 1 calc(25% - 20px);
+    min-width: 260px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.card h3 {
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table th, table td {
+    padding: 8px;
+    text-align: center;
+}
+
+table thead {
+    background: #f4f4f4;
+}
+
+table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+table tfoot td {
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}

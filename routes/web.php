@@ -4,6 +4,7 @@ use App\Http\Controllers\AwardController;
 use App\Http\Controllers\OpticalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/', function () {
 
 // ----- Logged routes
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // ----- Admin routes
     Route::prefix('/admin')->middleware('can:access_admin')->group(function () {
         Route::prefix('/users')->group(function () {
@@ -34,6 +36,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/', [UserController::class, 'store'])->name('users.store');
             Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
             Route::get('/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+
         });
     });
     // ----- Admin routes end
