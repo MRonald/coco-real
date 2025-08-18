@@ -3,6 +3,7 @@
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\OpticalController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,14 @@ Route::middleware('auth')->group(function () {
             Route::post('/', [ProductController::class, 'store'])->name('products.store');
             Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
             Route::get('/{id}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
+        });
+
+        Route::prefix('/sales')->group(function () {
+            Route::get('/', [SaleController::class, 'index'])->name('sales.index');
+            Route::get('/create', [SaleController::class, 'create'])->name('sales.create');
+            Route::post('/', [SaleController::class, 'store'])->name('sales.store');
+            Route::get('/{id}/edit', [SaleController::class, 'edit'])->name('sales.edit');
+            Route::get('/{id}/delete', [SaleController::class, 'destroy'])->name('sales.destroy');
         });
     });
     // ----- Admin routes end

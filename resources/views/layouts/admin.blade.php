@@ -125,6 +125,30 @@
                         </ul>
                     </li>
                 </ul>
+
+                <p class="text-muted nav-heading mt-4 mb-1">
+                    <span>Comercial</span>
+                </p>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#sales" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-sales fe-16"></i>
+                            <span class="ml-3 item-text">Vendas</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="sales">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('sales.index') }}"><span
+                                        class="ml-1 item-text">Listar</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('sales.create') }}"><span
+                                        class="ml-1 item-text">Criar</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
         </aside>
 
