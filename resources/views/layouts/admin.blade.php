@@ -84,7 +84,7 @@
                     </a>
                 </div> --}}
                 <p class="text-muted nav-heading mt-4 mb-1">
-                    <span>Plataforma</span>
+                    <span>Cadastro</span>
                 </p>
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item dropdown">
@@ -100,6 +100,26 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link pl-3" href="{{ route('users.create') }}"><span
+                                        class="ml-1 item-text">Criar</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#products" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-products fe-16"></i>
+                            <span class="ml-3 item-text">Produtos</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="products">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('products.index') }}"><span
+                                        class="ml-1 item-text">Listar</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('products.create') }}"><span
                                         class="ml-1 item-text">Criar</span></a>
                             </li>
                         </ul>
