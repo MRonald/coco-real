@@ -4,7 +4,7 @@ use App\Http\Controllers\AwardController;
 use App\Http\Controllers\OpticalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PeopleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +26,11 @@ Route::get('/', function () {
 
 // ----- Logged routes
 Route::middleware('auth')->group(function () {
-    // ----- Admin routes
+Route::middleware(['auth'])->group(function() {
+    Route::resource('people', PeopleController::class);
+
+    Route::get('/people/search', [PeopleController::class, 'search'])->name('people.search');
+});
     Route::prefix('/admin')->middleware('can:access_admin')->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('users.index');
