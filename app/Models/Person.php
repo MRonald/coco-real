@@ -7,28 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Person extends Model
 {
     protected $fillable = [
-        'name',
-        'nature',
-        'document',
-        'ie',
-        'icms_taxpayer',
-        'business_unit',
-        'cep',
-        'address',
-        'number',
-        'complement',
-        'neighborhood',
-        'city',
-        'state',
-        'email',
-        'phone',
-        'is_client',
-        'is_employee',
-        'is_supplier',
-        'is_partner',
-        'has_price_table',
-        'status'
-    ];
+    'name',
+    'email',
+    'phone',
+    'is_client',
+    'is_supplier',
+    'is_employee'
+];
 
     protected $casts = [
         'is_client' => 'boolean',

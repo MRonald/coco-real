@@ -27,10 +27,9 @@ Route::get('/', function () {
 // ----- Logged routes
 Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function() {
-Route::resource('people', PeopleController::class);
+    Route::resource('people', PeopleController::class);
 
-// User Management
-Route::resource('users', UserController::class)->except(['show']);
+    Route::get('/people/search', [PeopleController::class, 'search'])->name('people.search');
 });
     Route::prefix('/admin')->middleware('can:access_admin')->group(function () {
         Route::prefix('/users')->group(function () {

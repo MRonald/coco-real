@@ -13,16 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const userDropdownMenu = document.getElementById('userDropdownMenu');
 
     if (userDropdownBtn) {
-        userDropdownBtn.addEventListener('click', function() {
+        userDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
             userDropdownMenu.classList.toggle('show');
         });
-    }
 
-    document.addEventListener('click', function(e) {
-        if (userDropdownBtn && !userDropdownBtn.contains(e.target) {
-            userDropdownMenu.classList.remove('show');
-        }
-    });
+        document.addEventListener('click', function() {
+            if (!userDropdownMenu.contains(event.target) && !userDropdownBtn.contains(event.target)) {
+                userDropdownMenu.classList.remove('show');
+            }
+        });
+    }
 
     function handleSidebar() {
         if (window.innerWidth < 768) {
