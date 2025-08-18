@@ -27,7 +27,6 @@ Route::get('/', function () {
 // ----- Logged routes
 Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function() {
-// People Management
 Route::resource('people', PeopleController::class);
 
 // User Management
