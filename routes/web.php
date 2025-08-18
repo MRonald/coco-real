@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AwardController;
+use App\Http\Controllers\BillInController;
+use App\Http\Controllers\BillOutController;
 use App\Http\Controllers\OpticalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
@@ -52,6 +54,22 @@ Route::middleware('auth')->group(function () {
             Route::post('/', [SaleController::class, 'store'])->name('sales.store');
             Route::get('/{id}/edit', [SaleController::class, 'edit'])->name('sales.edit');
             Route::get('/{id}/delete', [SaleController::class, 'destroy'])->name('sales.destroy');
+        });
+
+        Route::prefix('/bills-in')->group(function () {
+            Route::get('/', [BillInController::class, 'index'])->name('bills-in.index');
+            Route::get('/create', [BillInController::class, 'create'])->name('bills-in.create');
+            Route::post('/', [BillInController::class, 'store'])->name('bills-in.store');
+            Route::get('/{id}/edit', [BillInController::class, 'edit'])->name('bills-in.edit');
+            Route::get('/{id}/delete', [BillInController::class, 'destroy'])->name('bills-in.destroy');
+        });
+
+        Route::prefix('/bills-out')->group(function () {
+            Route::get('/', [BillOutController::class, 'index'])->name('bills-out.index');
+            Route::get('/create', [BillOutController::class, 'create'])->name('bills-out.create');
+            Route::post('/', [BillOutController::class, 'store'])->name('bills-out.store');
+            Route::get('/{id}/edit', [BillOutController::class, 'edit'])->name('bills-out.edit');
+            Route::get('/{id}/delete', [BillOutController::class, 'destroy'])->name('bills-out.destroy');
         });
     });
     // ----- Admin routes end

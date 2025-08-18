@@ -149,6 +149,50 @@
                         </ul>
                     </li>
                 </ul>
+
+                <p class="text-muted nav-heading mt-4 mb-1">
+                    <span>Financeiro</span>
+                </p>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#bills-out" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-bills-out fe-16"></i>
+                            <span class="ml-3 item-text">Contas a Pagar</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="bills-out">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('bills-out.index') }}"><span
+                                        class="ml-1 item-text">Listar</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('bills-out.create') }}"><span
+                                        class="ml-1 item-text">Criar</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#bills-in" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-bills-in fe-16"></i>
+                            <span class="ml-3 item-text">Contas a Receber</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="bills-in">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('bills-in.index') }}"><span
+                                        class="ml-1 item-text">Listar</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('bills-in.create') }}"><span
+                                        class="ml-1 item-text">Criar</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
         </aside>
 
@@ -308,6 +352,7 @@
     <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/plugins/monthSelect/index.js"></script>
 
     @yield('script')
 
@@ -326,6 +371,17 @@
             flatpickr(this, {
                 dateFormat: "d/m/Y",
                 locale: "pt",
+            });
+        });
+        $(document).delegate('input.month-year-datepicker', 'focus', function() {
+            flatpickr(this, {
+                plugins: [
+                    new monthSelectPlugin({
+                        shorthand: true, // Exibe "Jan" em vez de "Janeiro"
+                        dateFormat: "m/Y", // Formato de saída
+                    })
+                ],
+                locale: "pt"
             });
         });
 

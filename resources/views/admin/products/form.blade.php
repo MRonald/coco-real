@@ -6,7 +6,7 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <h2 class="page-title">
-                        @if (isset($user->id))
+                        @if (isset($product->id))
                             Editar
                         @else
                             Criar
@@ -19,13 +19,13 @@
                                 <div class="card-body">
                                     <form class="form-validation" method="POST" action="{{ route('products.store') }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $user->id ?? '' }}" />
+                                        <input type="hidden" name="id" value="{{ $product->id ?? '' }}" />
 
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
                                                 <label for="name">Nome</label>
                                                 <input type="text" name="name" id="name"
-                                                    value="{{ $user->name ?? '' }}"
+                                                    value="{{ $product->name ?? '' }}"
                                                     class="form-control required-validation">
                                                 <div class="invalid-feedback"></div>
                                             </div>
@@ -36,7 +36,7 @@
                                             <div class="form-group col-md-12">
                                                 <label for="unit_value">Valor Unitário</label>
                                                 <input type="number" name="unit_value" id="unit_value"
-                                                    value="{{ $user->unit_value ?? '' }}"
+                                                    value="{{ $product->unit_value ?? '' }}"
                                                     class="form-control required-validation" step="0.01" min="0"
                                                     placeholder="0.00">
                                                 <div class="invalid-feedback"></div>
@@ -44,7 +44,7 @@
                                         </div>
 
                                         <button type="submit" class="btn btn-primary">
-                                            @if (isset($user->id))
+                                            @if (isset($product->id))
                                                 Atualizar
                                             @else
                                                 Cadastrar
