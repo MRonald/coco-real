@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{-- TESTE-APP-TESTE --}}
 
 <head>
     <meta charset="utf-8">
@@ -42,6 +43,7 @@
         }
     </style>
 </head>
+{{-- TESTE-APP-TESTE --}}{{-- TESTE-APP-TESTE --}}{{-- TESTE-APP-TESTE --}}{{-- TESTE-APP-TESTE --}}{{-- TESTE-APP-TESTE --}}
 
 <body>
     <div class="d-flex">
@@ -76,3 +78,5 @@
 </body>
 
 </html>
+
+{{-- TESTE-APP-TESTE --}}
