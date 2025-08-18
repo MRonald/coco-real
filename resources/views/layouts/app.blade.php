@@ -1,85 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
-{{-- apenas para teste --}}{{-- apenas para teste --}}{{-- apenas para teste --}}{{-- apenas para teste --}}
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }} | @yield('title')</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <style>
         :root {
-            --primary-dark: #2c3e50;
             --primary: #3498db;
-            --danger: #e74c3c;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --info: #1abc9c;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background: var(--dark);
+            transition: all 0.3s;
         }
 
-        .top-nav {
-            background-color: var(--primary-dark);
+        .content-area {
+            flex: 1;
+            padding: 20px;
         }
 
-        .badge-primary {
-            background-color: var(--primary);
+        .person-card {
+            transition: transform 0.2s;
         }
 
-        .badge-success {
-            background-color: var(--success);
-        }
-
-        .badge-danger {
-            background-color: var(--danger);
-        }
-
-        .badge-warning {
-            background-color: var(--warning);
-        }
-
-        .badge-info {
-            background-color: var(--info);
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .btn-danger {
-            background-color: var(--danger);
-            border-color: var(--danger);
-        }
-
-        .btn-success {
-            background-color: var(--success);
-            border-color: var(--success);
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
 <body>
-    @yield('content')
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar text-white p-3">
+            <h4 class="mb-4">{{ config('app.name') }}</h4>
 
-    @yield('scripts')
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white active" href="{{ route('people.index') }}">
+                        <i class="fas fa-users me-2"></i> People Management
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="{{ route('users.index') }}">
+                        <i class="fas fa-user-cog me-2"></i> User Management
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-area">
+            @yield('content')
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    @stack('scripts')
 </body>
 
 </html>
-
-{{-- apenas para teste --}}

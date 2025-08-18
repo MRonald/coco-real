@@ -53,4 +53,14 @@ class User extends Authenticatable implements JWTSubject
                 return '';
         }
     }
+
+    public function userAccount()
+    {
+        return $this->hasOne(UserAccount::class);
+    }
+
+    public function getHasUserAccountAttribute()
+    {
+        return $this->userAccount()->exists();
+    }
 }
