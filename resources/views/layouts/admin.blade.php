@@ -90,7 +90,7 @@
                     <li class="nav-item dropdown">
                         <a href="#dashboard" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-dashboard fe-16"></i>
+                            <i class="fe fe-list fe-16"></i>
                             <span class="ml-3 item-text">Resumo de Vendas</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
@@ -129,7 +129,7 @@
                     <li class="nav-item dropdown">
                         <a href="#products" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-products fe-16"></i>
+                            <i class="fe fe-package fe-16"></i>
                             <span class="ml-3 item-text">Produtos</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="products">
@@ -153,7 +153,7 @@
                     <li class="nav-item dropdown">
                         <a href="#roles" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-roles fe-16"></i>
+                            <i class="fe fe-clipboard fe-16"></i>
                             <span class="ml-3 item-text">Cargos</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="roles">
@@ -173,7 +173,7 @@
                     <li class="nav-item dropdown">
                         <a href="#collaborators" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-collaborators fe-16"></i>
+                            <i class="fe fe-briefcase fe-16"></i>
                             <span class="ml-3 item-text">Colaboradores</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="collaborators">
@@ -193,7 +193,7 @@
                     <li class="nav-item dropdown">
                         <a href="#sales" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-sales fe-16"></i>
+                            <i class="fe fe-dollar-sign fe-16"></i>
                             <span class="ml-3 item-text">Vendas</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="sales">
@@ -217,7 +217,7 @@
                     <li class="nav-item dropdown">
                         <a href="#bills-out" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-bills-out fe-16"></i>
+                            <i class="fe fe-trending-down fe-16"></i>
                             <span class="ml-3 item-text">Contas a Pagar</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="bills-out">
@@ -237,7 +237,7 @@
                     <li class="nav-item dropdown">
                         <a href="#bills-in" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">
-                            <i class="fe fe-bills-in fe-16"></i>
+                            <i class="fe fe-trending-up fe-16"></i>
                             <span class="ml-3 item-text">Contas a Receber</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="bills-in">
