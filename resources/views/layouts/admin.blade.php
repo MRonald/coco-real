@@ -127,6 +127,46 @@
                 </ul>
 
                 <p class="text-muted nav-heading mt-4 mb-1">
+                    <span>RH</span>
+                </p>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#roles" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-roles fe-16"></i>
+                            <span class="ml-3 item-text">Cargos</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="roles">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('roles.index') }}"><span
+                                        class="ml-1 item-text">Listar</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('roles.create') }}"><span
+                                        class="ml-1 item-text">Criar</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#collaborators" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle nav-link">
+                            <i class="fe fe-collaborators fe-16"></i>
+                            <span class="ml-3 item-text">Colaboradores</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="collaborators">
+                            <li class="nav-item">
+                                <a class="nav-link pl-3" href="{{ route('users.collaborators') }}"><span
+                                        class="ml-1 item-text">Listar</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p class="text-muted nav-heading mt-4 mb-1">
                     <span>Comercial</span>
                 </p>
                 <ul class="navbar-nav flex-fill w-100 mb-2">

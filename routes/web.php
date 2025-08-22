@@ -5,6 +5,7 @@ use App\Http\Controllers\BillInController;
 use App\Http\Controllers\BillOutController;
 use App\Http\Controllers\OpticalController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/', [UserController::class, 'store'])->name('users.store');
             Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
             Route::get('/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+
+            Route::get('/collaborators', [UserController::class, 'collaborators'])->name('users.collaborators');
         });
 
         Route::prefix('/products')->group(function () {
@@ -70,6 +73,14 @@ Route::middleware('auth')->group(function () {
             Route::post('/', [BillOutController::class, 'store'])->name('bills-out.store');
             Route::get('/{id}/edit', [BillOutController::class, 'edit'])->name('bills-out.edit');
             Route::get('/{id}/delete', [BillOutController::class, 'destroy'])->name('bills-out.destroy');
+        });
+
+        Route::prefix('/roles')->group(function () {
+            Route::get('/', [RoleController::class, 'index'])->name('roles.index');
+            Route::get('/create', [RoleController::class, 'create'])->name('roles.create');
+            Route::post('/', [RoleController::class, 'store'])->name('roles.store');
+            Route::get('/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+            Route::get('/{id}/delete', [RoleController::class, 'destroy'])->name('roles.destroy');
         });
     });
     // ----- Admin routes end

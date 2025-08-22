@@ -109,7 +109,7 @@
                                         </div>
 
                                         <div class="form-row">
-                                            <div class="form-group col-md-12">
+                                            <div class="form-group col-md-6">
                                                 <label for="type">Tipo de usuário</label>
                                                 <select class="custom-select required-validation" id="type"
                                                     name="type">
@@ -130,6 +130,20 @@
                                                     <option value="client"
                                                         @if (isset($user->id) && $user->type === 'client') selected @endif>Cliente
                                                     </option>
+                                                </select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label for="role_id">Cargo</label>
+                                                <select class="custom-select" id="role_id" name="role_id">
+                                                    <option selected disabled>Selecione</option>
+                                                    @foreach ($roles as $role)
+                                                        <option value="{{ $role->id }}"
+                                                            @if (isset($user->id) && $user->role_id === $role->id) selected @endif>
+                                                            {{ $role->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                                 <div class="invalid-feedback"></div>
                                             </div>

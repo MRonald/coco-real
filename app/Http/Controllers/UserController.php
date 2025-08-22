@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,23 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function collaborators()
+    {
+        $users = User::query()->where('type', 'collaborator')->get();
+
+        return view('admin.users.list', compact('users'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.users.form');
+        $roles = Role::all();
+
+        return view('admin.users.form', compact('roles'));
     }
 
     /**
@@ -59,8 +72,9 @@ class UserController extends Controller
     public function edit(int $id)
     {
         $user = User::findOrFail($id);
+        $roles = Role::all();
 
-        return view('admin.users.form', compact('user'));
+        return view('admin.users.form', compact('user', 'roles'));
     }
 
     /**
