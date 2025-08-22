@@ -5,7 +5,13 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <h2 class="mb-2 page-title">Lista de usuários</h2>
+                    <h2 class="mb-2 page-title">Lista de
+                        @if (Route::is('users.collaborators'))
+                            <th>Colaboradores</th>
+                        @else
+                            <th>Usuários</th>
+                        @endif
+                    </h2>
                     <div class="row my-4">
                         <!-- Small table -->
                         <div class="col-md-12">

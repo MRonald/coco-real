@@ -11,7 +11,7 @@
                                 <div class="card-body">
                                     <form class="form-row" method="GET" action="{{ route('sales.dashboard') }}">
                                         <div class="form-group col-md-3">
-                                            <label for="type">Tipo de usuário</label>
+                                            <label for="type">Tipo de Período</label>
                                             <select class="custom-select required-validation" id="type" name="type">
                                                 <option value="daily" @if (request('type') == 'daily') selected @endif>
                                                     Diário
@@ -23,7 +23,7 @@
                                                     Mensal
                                                 </option>
                                                 <option value="period" @if (request('type') == 'period') selected @endif>
-                                                    Período
+                                                    Período Personalizado
                                                 </option>
                                             </select>
                                             <div class="invalid-feedback"></div>

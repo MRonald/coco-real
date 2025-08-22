@@ -61,6 +61,7 @@
                                                 <input type="text" name="zip_code" id="zip_code"
                                                     value="{{ $user->zip_code ?? '' }}" class="form-control">
                                                 <div class="invalid-feedback"></div>
+
                                             </div>
 
                                             <div class="form-group col-md-7">
@@ -104,6 +105,22 @@
                                                 <label for="state">Estado</label>
                                                 <input type="text" name="state" id="state"
                                                     value="{{ $user->state ?? '' }}" class="form-control">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="password">Senha</label>
+                                                <input type="password" name="password" id="password"
+                                                    class="form-control confirm-validation">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="password_confirmation">Confirmação de senha</label>
+                                                <input type="password" name="password_confirmation"
+                                                    id="password_confirmation"
+                                                    class="form-control confirm-compare-validation">
                                                 <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
