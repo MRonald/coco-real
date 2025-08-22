@@ -16,8 +16,17 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
-        'password',
         'type',
+        'document',
+        'phone',
+        'zip_code',
+        'public_place',
+        'number',
+        'complement',
+        'district',
+        'city',
+        'state',
+        'password',
     ];
 
     protected $hidden = [
@@ -44,10 +53,14 @@ class User extends Authenticatable implements JWTSubject
     {
         switch ($this->type) {
             case 'admin':
-                return 'Administrador';
-            case 'seller':
-                return 'Vendedor';
-            case 'default':
+                return 'Administrador da Plataforma';
+            case 'partner':
+                return 'Sócio';
+            case 'collaborator':
+                return 'Colaborador';
+            case 'supplier':
+                return 'Fornecedor';
+            case 'client':
                 return 'Cliente';
             default:
                 return '';
