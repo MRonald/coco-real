@@ -5,10 +5,71 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Sale;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SaleController extends Controller
 {
+    /**
+     * Display a detail listing of products sales.
+     */
+    public function dashboard(Request $request)
+    {
+        $type = $request->type ?? null;
+        $initDate = null;
+        $endDate = null;
+
+        switch ($type) {
+            case 'daily':
+                $initDate = Carbon::today();
+                $endDate = Carbon::today();
+                break;
+
+            case 'weekly':
+                $initDate = Carbon::today()->subWeek();
+                $endDate = Carbon::today();
+                break;
+
+            case 'monthly':
+                $initDate = Carbon::today()->subMonth();
+                $endDate = Carbon::today();
+                break;
+
+            case 'period':
+                $initDate = Carbon::createFromFormat('d/m/Y', $request->init_date);
+                $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date);
+                break;
+
+            default:
+                $initDate = Carbon::today();
+                $endDate = Carbon::today();
+                break;
+        }
+
+        $products = Product::selectRaw('
+            products.*,
+            COUNT(sales.id) as sales_count,
+            SUM(product_sale.quantity) as total_quantity,
+            SUM(product_sale.quantity * product_sale.unit_value) as total_value
+        ')
+            ->join('product_sale', 'products.id', '=', 'product_sale.product_id')
+            ->join('sales', 'product_sale.sale_id', '=', 'sales.id')
+            ->where('sales.date', '>=', $initDate)
+            ->where('sales.date', '<=', $endDate)
+            ->groupBy('products.id')
+            ->having('sales_count', '>', 0)
+            ->orderBy('total_value', 'DESC')
+            ->get();
+
+        $total = $products->reduce(function ($sum, $product) {
+            return $sum + $product->total_value;
+        }, 0);
+
+        return view('admin.start.list', compact('products', 'type', 'initDate', 'endDate', 'total'));
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -24,7 +85,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $clients = User::all();
+        $clients = User::query()->where('type', 'client')->get();
         $products = Product::all();
 
         return view('admin.sales.form', compact('clients', 'products'));
@@ -95,7 +156,7 @@ class SaleController extends Controller
     public function edit(int $id)
     {
         $sale = Sale::findOrFail($id);
-        $clients = User::all();
+        $clients = User::query()->where('type', 'client')->get();
         $products = Product::all();
 
         return view('admin.sales.form', compact('sale', 'clients', 'products'));

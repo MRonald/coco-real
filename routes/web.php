@@ -57,6 +57,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/', [SaleController::class, 'store'])->name('sales.store');
             Route::get('/{id}/edit', [SaleController::class, 'edit'])->name('sales.edit');
             Route::get('/{id}/delete', [SaleController::class, 'destroy'])->name('sales.destroy');
+
+            Route::get('/dashboard', [SaleController::class, 'dashboard'])->name('sales.dashboard');
         });
 
         Route::prefix('/bills-in')->group(function () {
