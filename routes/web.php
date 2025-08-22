@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/{id}/edit', [SaleController::class, 'edit'])->name('sales.edit');
             Route::get('/{id}/delete', [SaleController::class, 'destroy'])->name('sales.destroy');
 
+            Route::get('/{id}/bill', [SaleController::class, 'bill'])->name('sales.bill');
             Route::get('/dashboard', [SaleController::class, 'dashboard'])->name('sales.dashboard');
         });
 

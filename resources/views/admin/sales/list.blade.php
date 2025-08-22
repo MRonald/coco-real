@@ -38,6 +38,9 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
+                                                                href="{{ route('sales.bill', $sale->id) }}"
+                                                                target="_blank">Ver fatura</a>
+                                                            <a class="dropdown-item"
                                                                 href="{{ route('sales.edit', $sale->id) }}">Editar</a>
                                                             <a class="dropdown-item" id="btnModalDelete" href="#"
                                                                 data-item-id="{{ $sale->id }}" data-toggle="modal"

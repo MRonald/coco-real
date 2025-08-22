@@ -163,6 +163,16 @@ class SaleController extends Controller
     }
 
     /**
+     * Show the bill page the specified resource.
+     */
+    public function bill(int $id)
+    {
+        $sale = Sale::findOrFail($id);
+
+        return view('admin.sales.bill', compact('sale'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(int $id)
