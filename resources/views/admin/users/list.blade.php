@@ -5,13 +5,18 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <h2 class="mb-2 page-title">Lista de
-                        @if (Route::is('users.collaborators'))
-                            <th>Colaboradores</th>
-                        @else
-                            <th>Usuários</th>
-                        @endif
-                    </h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="page-title m-0">Lista de
+                            @if (Route::is('users.collaborators'))
+                                <th>Colaboradores</th>
+                            @else
+                                <th>Usuários</th>
+                            @endif
+                        </h2>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">
+                            Criar
+                        </a>
+                    </div>
                     <div class="row my-4">
                         <!-- Small table -->
                         <div class="col-md-12">
@@ -39,7 +44,7 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     @if (Route::is('users.collaborators'))
-                                                        <th>{{ $user->role->name }}</th>
+                                                        <th>{{ $user->role->name ?? '-' }}</th>
                                                     @else
                                                         <td>{{ $user->translated_type }}</td>
                                                     @endif

@@ -5,7 +5,12 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <h2 class="mb-2 page-title">Lista de Produtos</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="page-title m-0">Lista de Vendas</h2>
+                        <a href="{{ route('sales.create') }}" class="btn btn-primary">
+                            Criar
+                        </a>
+                    </div>
                     <div class="row my-4">
                         <!-- Small table -->
                         <div class="col-md-12">
@@ -15,10 +20,10 @@
                                     <table class="table datatables" id="dataTable-1">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
+                                                <th>Nº Pedido</th>
                                                 <th>Cliente</th>
                                                 <th>Data</th>
-                                                <th>Quantidade de Itens</th>
+                                                <th>Produtos</th>
                                                 <th>Valor Total</th>
                                                 <th>Ações</th>
                                             </tr>
@@ -29,7 +34,11 @@
                                                     <td>{{ $sale->id }}</td>
                                                     <td>{{ $sale->client->name }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($sale->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $sale->products()->count() }}</td>
+                                                    <td>
+                                                        @foreach ($sale->products as $product)
+                                                            {{ $product->name }}: <b>{{ $product->pivot->quantity }}</b><br>
+                                                        @endforeach
+                                                    </td>
                                                     <td>R$ {{ $sale->value }}</td>
                                                     <td>
                                                         <button class="btn btn-sm dropdown-toggle more-horizontal"

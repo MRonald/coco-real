@@ -5,7 +5,12 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <h2 class="mb-2 page-title">Lista de Cargos</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="page-title m-0">Lista de Cargos</h2>
+                        <a href="{{ route('roles.create') }}" class="btn btn-primary">
+                            Criar
+                        </a>
+                    </div>
                     <div class="row my-4">
                         <!-- Small table -->
                         <div class="col-md-12">
